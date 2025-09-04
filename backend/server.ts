@@ -3,7 +3,10 @@ import cors from 'cors';
 import nodeRoutes from './routes/node';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['https://tree-hierarchy-app-vx5t.vercel.app', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 // Homepage
 app.get('/', (req, res) => {
