@@ -32,7 +32,7 @@ export default function App() {
   const [searchResults, setSearchResults] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/nodes/root')
+    fetch('https://tree-hierarchy-app.onrender.com/api/nodes/root')
       .then(r => r.json())
       .then(data => {
         const nodeMap = new Map();
@@ -43,7 +43,7 @@ export default function App() {
 
   useEffect(() => {
     if (search.length > 2) {
-      fetch(`http://localhost:3001/api/search?q=${search}`)
+      fetch(`https://tree-hierarchy-app.onrender.com/api/search?q=${search}`)
         .then(r => r.json())
         .then(data => setSearchResults(data));
     } else {
@@ -57,7 +57,7 @@ export default function App() {
     } else {
       setExpanded(prev => new Set([...prev, id]));
       if (!children.has(id)) {
-        const res = await fetch(`http://localhost:3001/api/nodes/${id}/children`);
+        const res = await fetch(`https://tree-hierarchy-app.onrender.com/api/nodes/${id}/children`);
         const data = await res.json();
         setChildren(prev => new Map(prev).set(id, data));
         data.forEach((n: Node) => setNodes(prev => new Map(prev).set(n.id, n)));
