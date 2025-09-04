@@ -12,6 +12,9 @@ interface Node {
 
 let nodes: Node[] = [];
 
+// Auto-generate initial data
+nodes = generateTree(5, 3);
+
 // Seed endpoint
 router.post('/dev/seed', (req: Request, res: Response) => {
   const breadth = parseInt(req.query.breadth as string) |  20;
