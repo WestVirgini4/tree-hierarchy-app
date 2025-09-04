@@ -5,7 +5,8 @@ import nodeRoutes from './routes/node';
 const app = express();
 app.use(cors({
   origin: ['https://tree-hierarchy-app-vx5t.vercel.app', 'http://localhost:3000'],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS']
 }));
 app.use(express.json());
 // Homepage
